@@ -16,6 +16,7 @@ import Studentprofile from './Studentprofile';
 import Professorprofile from './Professorprofile';
 import Rate from './Rate';
 import Search from './Search';
+import Upload from './Upload';
 
 ReactDOM.render(
     <BrowserRouter>
@@ -32,6 +33,8 @@ ReactDOM.render(
             <Route exact path="/professorprofile/:professor_id" component={Professorprofile}/>
             <Route exact path="/rate" component={Rate}/>
             <Route exact path="/search" component={Search}/>
+            
+            <Route exact path="/upload" component={Upload}/>
 
 
         </>

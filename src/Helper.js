@@ -1,4 +1,4 @@
-// const BASEURL= "http://localhost:3009/";
+// const BASEURL= "http://192.168.1.31:3009/v1/";
 
 // export const FetchResult = (url,method,body) => {
 //   if(method === 'GET'){

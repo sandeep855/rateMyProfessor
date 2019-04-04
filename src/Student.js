@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Main extends Component {
+
+	notify = (msg) => {
+		toast.success(msg);
+	};
+
+	notifyError = (msg) => {
+		toast.error(msg);
+	};
+
+
 	constructor() {
 		super();
 		this.state = {
@@ -56,8 +68,9 @@ class Main extends Component {
 			address: this.state.address
 		};
 		console.log(data);
+			// debugger
 
-		fetch('http://localhost:3009/v1/users', {
+		fetch('http://192.168.1.31:3009/v1/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -72,9 +85,11 @@ class Main extends Component {
 					alert('now login first to view profile');
 					this.props.history.push('/');
 				}
+			console.log(res + "error find")
 			})
 			.catch((err) => {
 				console.log(`Error while logging into the app ${err}`);
+				this.notifyError('Error while logging');
 			});
 	};
 
@@ -279,19 +294,6 @@ class Main extends Component {
 										<label htmlFor="standard">Standard / Semester</label>
 										<input
 											id="semester"
-											type="text"
-											className="form-control"
-											onChange={(e) => this.handleInput(e)}
-										/>
-									</div>
-								</div>
-							</div>
-							<div className="row">
-								<div className="col-xl-12">
-									<div className="form-group md-form">
-										<label htmlFor="school">Name of College / School / University</label>
-										<input
-											id="school"
 											type="text"
 											className="form-control"
 											onChange={(e) => this.handleInput(e)}

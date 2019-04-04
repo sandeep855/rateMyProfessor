@@ -32,7 +32,7 @@ class Studentprofile extends Component {
 	// }
 
 		componentWillMount() {
-		fetch(`http://localhost:3009/v1/professorById/${this.props.match.params.student_id}`, {
+		fetch(`http://192.168.1.31:3009/v1/studentById/${this.props.match.params.student_id}`,{
 		})
 			.then((res) => {
 				return res.json();
@@ -41,6 +41,7 @@ class Studentprofile extends Component {
 				this.setState({
 					users: res[0]
 				});
+				console.log(res[0])
 			})
 			.catch((err) => {
 				console.log(err);
@@ -74,7 +75,7 @@ class Studentprofile extends Component {
 											aria-haspopup="true"
 											aria-expanded="false"
 										>
-											<b>Hi! {this.props.name}</b>
+											<b>Hi! {this.state.users.name}</b>
 										</button>
 										<div className="dropdown-menu" aria-labelledby="userPanel">
 											
@@ -139,7 +140,7 @@ class Studentprofile extends Component {
 						<div className="col-lg-12 pt-5 text-center">
 							<h2>
 								<b>Profile</b>
-								:- student Name
+								:- {this.state.users.name}
 							</h2>
 						</div>
 						<div className="row">
@@ -195,25 +196,6 @@ class Studentprofile extends Component {
 												</li>
 											</ul>
 										</span>
-										<span className="h4">
-											<b>
-												Navigation
-												<hr style={{ margin: '0' }} />
-											</b>
-										</span>
-										<span>
-											<ul className="navigation">
-												<li>
-													<Link to="#personal">>> Presonal Details</Link>
-												</li>
-												<li>
-													<Link to="#pro">>> Professional Details</Link>
-												</li>
-												<li>
-													<Link to="#qualification">>> Qualification Details</Link>
-												</li>
-											</ul>
-										</span>
 									</div>
 								</div>
 							</div>
@@ -230,60 +212,25 @@ class Studentprofile extends Component {
 														<tbody>
 															<tr>
 																<th>Email</th>
-																<td>Information</td>
+																<td>{this.state.users.email}</td>
 															</tr>
 															<tr>
 																<th>Age</th>
-																<td>Information</td>
+																<td>{this.state.users.age}</td>
 															</tr>
 															<tr>
 																<th>Contact</th>
-																<td>Information</td>
+																<td>{this.state.users.contact}</td>
 															</tr>
 															<tr>
 																<th>Address</th>
-																<td>Information</td>
+																<td>{this.state.users.address}</td>
 															</tr>
 															<tr>
 																<th>Language</th>
-																<td>Information</td>
+																<td>{this.state.users.languages}</td>
 															</tr>
 														</tbody>
-													</table>
-												</div>
-											</div>
-										</section>
-										<section id="pro" className="pt-3 pr-2 pl-2 pb-3 mt-3 mb-3 rounded">
-											<h5>
-												<b>Professional Details:-</b>
-											</h5>
-											<div className="row">
-												<div className="col-lg-12 table-responsive">
-													<table className="table table-hover">
-														<tr>
-															<th>Specialization</th>
-															<td>Specialized in</td>
-														</tr>
-														<tr>
-															<th>Expereince</th>
-															<td>Expereinced in</td>
-														</tr>
-														<tr>
-															<th>Key Skills</th>
-															<td>Skills</td>
-														</tr>
-														<tr>
-															<th>Project / Research</th>
-															<td>
-																<button type="button" className="btn btn-success">
-																	<i className="fa fa-arrow-down" /> File Name
-																</button>
-															</td>
-														</tr>
-														<tr>
-															<th>Achievements</th>
-															<td>Achievement name</td>
-														</tr>
 													</table>
 												</div>
 											</div>
@@ -305,16 +252,18 @@ class Studentprofile extends Component {
 																<th>School / College / University</th>
 																<th>Affilation</th>
 																<th>Subject</th>
-																<th>Duration (years)</th>
+																<th>Duration</th>
+																<th>Semester</th>
 															</tr>
 														</thead>
 														<tbody>
 															<tr>
-																<td>Level of Qualification</td>
-																<td>School Name</td>
-																<td>Affilated to</td>
-																<td>Subject name</td>
-																<td>number of years</td>
+																<td>{this.state.users.qualification}</td>
+																<td>{this.state.users.schoolCollege}</td>
+																<td>{this.state.users.board}</td>
+																<td>{this.state.users.subject}</td>
+																<td>{this.state.users.duration}</td>
+																<td>{this.state.users.semester}</td>
 															</tr>
 														</tbody>
 													</table>
@@ -379,7 +328,7 @@ class Studentprofile extends Component {
 				</div>
 				<footer className="p-0 pt-3 pb-3 mt-5">
 					<div className="row m-0 p-0">
-						<div className="col-5 offset-1 p-0">&copy; student's Hub 2018</div>
+						<div className="col-5 offset-1 p-0">&copy; student's Hub 2019</div>
 						<div className="col-5 text-right p-0">Terms and Condition</div>
 					</div>
 				</footer>

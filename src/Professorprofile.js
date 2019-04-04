@@ -22,7 +22,7 @@ class Professorprofile extends Component {
 
 	componentWillMount() {
 		// console.log(this.props.match.params.professor_id)
-		fetch(`http://localhost:3009/v1/professorById/${this.props.match.params.professor_id}`, {
+		fetch(`http://192.168.1.31:3009/v1/professorById/${this.props.match.params.professor_id}`, {
 		})
 			.then((res) => {
 				return res.json();

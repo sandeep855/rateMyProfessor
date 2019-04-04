@@ -84,7 +84,7 @@ class Professor extends Component {
 		};
 		console.log(data);
 
-		fetch('http://localhost:3009/v1/users', {
+		fetch('http://192.168.1.31:3009/v1/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
