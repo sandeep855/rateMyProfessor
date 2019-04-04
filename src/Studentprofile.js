@@ -32,7 +32,7 @@ class Studentprofile extends Component {
 	// }
 
 		componentWillMount() {
-		fetch(`http://192.168.1.31:3009/v1/studentById/${this.props.match.params.student_id}`,{
+		fetch(`http://localhost:3009/v1/studentById/${this.props.match.params.student_id}`,{
 		})
 			.then((res) => {
 				return res.json();

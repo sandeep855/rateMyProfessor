@@ -7,7 +7,6 @@ class Professor extends Component {
 			role: 'professor',
 
 			employmentType: '',
-
 			name: '',
 			email: '',
 			password: '',
@@ -38,10 +37,15 @@ class Professor extends Component {
 		};
 	}
 
+	componentDidUpdate() {
+		console.log(this.state.workingFor);
+	}
+
 	handleInput = (e) => {
 		this.setState({
 			[e.target.id]: e.target.value
 		});
+		console.log(e.target.vslue);
 	};
 
 	checkConfirmPassword = (e) => {
@@ -84,7 +88,8 @@ class Professor extends Component {
 		};
 		console.log(data);
 
-		fetch('http://192.168.1.31:3009/v1/users', {
+		// fetch('http://192.168.1.31:3009/v1/users', {
+		fetch('http://localhost:3009/v1/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -106,6 +111,83 @@ class Professor extends Component {
 			});
 	};
 
+	dropDownSelect = () => {
+		if (this.state.workingFor === 'College') {
+			console.log('College in');
+			return (
+				<div className="form-group md-form mt-3">
+					<div className="row">
+						<div className="col-xl-6">
+							<label htmlFor="affilation">College Affilation</label>
+							<input
+								id="collegeAffilation"
+								type="text"
+								required="required"
+								className="form-control"
+								onChange={(e) => {
+									this.handleInput(e);
+								}}
+							/>
+						</div>
+						<div className="col-xl-6">
+							<label htmlFor="department">College Department</label>
+							<input
+								id="collegeDepartment"
+								type="text"
+								required="required"
+								className="form-control"
+								onChange={(e) => {
+									this.handleInput(e);
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+			);
+		} else if (this.state.workingFor === 'Private Institute') {
+			console.log('PI in');
+
+			return (
+				<div className="form-group md-form mt-3">
+					<div className="row">
+						<div className="col-xl-12">
+							<label htmlFor="type">Private Institute type</label>
+							<input
+								id="privateInstituteYype"
+								type="text"
+								required="required"
+								className="form-control"
+								onChange={(e) => {
+									this.handleInput(e);
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+			);
+		} else if (this.state.workingFor === 'University') {
+			// console.log('uni in')
+
+			return (
+				<div className="form-group md-form mt-3">
+					<div className="row">
+						<div className="col-xl-12">
+							<label htmlFor="department">Universirty Department</label>
+							<input
+								id="univDepartment"
+								type="text"
+								required="required"
+								className="form-control"
+								onChange={(e) => {
+									this.handleInput(e);
+								}}
+							/>
+						</div>
+					</div>
+				</div>
+			);
+		}
+	};
 	render() {
 		return (
 			<div className="container pb-5 mb-5">
@@ -420,66 +502,8 @@ class Professor extends Component {
 								<option value="University">University</option>
 							</select>
 						</div>
-						<div className="form-group md-form mt-3">
-							<div className="row">
-								<div className="col-xl-6">
-									<label htmlFor="affilation">College Affilation</label>
-									<input
-										id="collegeAffilation"
-										type="text"
-										required="required"
-										className="form-control"
-										onChange={(e) => {
-											this.handleInput(e);
-										}}
-									/>
-								</div>
-								<div className="col-xl-6">
-									<label htmlFor="department">College Department</label>
-									<input
-										id="collegeDepartment"
-										type="text"
-										required="required"
-										className="form-control"
-										onChange={(e) => {
-											this.handleInput(e);
-										}}
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="form-group md-form mt-3">
-							<div className="row">
-								<div className="col-xl-12">
-									<label htmlFor="type">Private Institute type</label>
-									<input
-										id="privateInstituteYype"
-										type="text"
-										required="required"
-										className="form-control"
-										onChange={(e) => {
-											this.handleInput(e);
-										}}
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="form-group md-form mt-3">
-							<div className="row">
-								<div className="col-xl-12">
-									<label htmlFor="department">Universirty Department</label>
-									<input
-										id="univDepartment"
-										type="text"
-										required="required"
-										className="form-control"
-										onChange={(e) => {
-											this.handleInput(e);
-										}}
-									/>
-								</div>
-							</div>
-						</div>
+						{this.dropDownSelect()}
+
 						<div className="form-group md-form mt-3">
 							<label htmlFor="firm">Name of Firm</label>
 							<input

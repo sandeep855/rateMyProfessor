@@ -70,7 +70,7 @@ class Main extends Component {
 		console.log(data);
 			// debugger
 
-		fetch('http://192.168.1.31:3009/v1/users', {
+		fetch('http://localhost:3009/v1/users', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
